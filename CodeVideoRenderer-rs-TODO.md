@@ -279,3 +279,23 @@ exclude = ["*.mp4", "frame_*.png", "preview.png", "frames/",
 
 **发布就绪状态**：`cargo publish --dry-run` 通过、名称可用、体积 7.1 MiB（余量约 30%）。
 仍需外部输入：crates.io API token、`repository` / `homepage` 地址。
+
+---
+
+## 10. v2.5：上传到 GitHub（2026-10-07）
+
+仓库已初始化 git 并推送到 <https://github.com/Goway-Hui/codevideorenderer-rs>
+（默认分支 `main`；初始提交 `d799815`，31 个文件 / 10,934 行）。
+
+**上传前做的准备**：
+
+1. `.gitignore` 补 `/.reasonix/` —— AI 会话附件属于本地数据，不该进仓库；
+2. 新增 **`.gitattributes`**（`* text=auto eol=lf`）—— Windows 的 `core.autocrlf` 默认为 true，
+   会在检出时把工作区文件改成 CRLF，造成"什么都没改却显示被修改"；同时把 `*.ttf` / `*.png` /
+   `*.mp4` 标为二进制，避免无意义 diff；
+3. 核对被忽略的文件：`demo-*.mp4`、`frame_*.png`、`target/`、`.reasonix/` 均未进入提交
+   （`git status --ignored` 逐项确认）；
+4. `Cargo.toml` 补上 `repository` / `homepage`，地址即本次远端。
+
+**连带效果**：因为已经是 git 仓库，`cargo publish` 不再需要 `--allow-dirty`，打包也会自动
+遵守 `.gitignore`（`Cargo.toml` 的 `exclude` 保留，作为双重保险）。`docs/RELEASING.md` 已同步。

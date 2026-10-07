@@ -13,9 +13,9 @@
 | 打包体积 | ✅ 27 files / 13.4 MiB → **7.1 MiB 压缩**（crates.io 上限 10 MiB） |
 | 名称可用性 | ✅ `codevideorenderer` 系列未被占用 |
 | `license` / `description` / `keywords` / `categories` / `documentation` | ✅ 已填 |
-| `repository` / `homepage` | ⬜ **待填**（需要远端仓库地址） |
+| `repository` / `homepage` | ✅ `https://github.com/Goway-Hui/codevideorenderer-rs` |
 | 版本号 | `0.1.0`（首次发布建议保持） |
-| git 仓库 | ⬜ 尚未初始化（见 §4） |
+| git 仓库 | ✅ 已初始化并推送到 GitHub（`main`），打包自动遵守 `.gitignore` |
 
 ---
 
@@ -66,11 +66,8 @@ $ cargo package                 # 看 “Packaged N files, X MiB (Y MiB compress
 $ cargo publish
 ```
 
-因为本目录目前**不是 git 仓库**，cargo 会要求加上 `--allow-dirty`：
-
-```console
-$ cargo publish --allow-dirty
-```
+工作区必须干净（所有改动都已提交）。若 cargo 报 `working directory is dirty`，先提交：
+`git add -A && git commit -m "..."`。
 
 发布完成后：
 
@@ -86,22 +83,23 @@ $ cvr --list-styles | head
 
 ---
 
-## 4. 关于 git 仓库（可选但建议）
+## 4. git 仓库（已完成）
 
-`cargo publish` 默认要求工作区干净，也就是需要一个 git 仓库。现在的替代做法是每次都加
-`--allow-dirty`，代价是**没有版本历史、出事无法回滚**，而且 cargo 会改读 `Cargo.toml` 的
-`exclude`（而不是 `.gitignore`）。
+仓库已初始化并推送到 <https://github.com/Goway-Hui/codevideorenderer-rs>，默认分支 `main`。
+由此带来三点变化：
 
-如果初始化仓库：
+- `cargo publish` 不再需要 `--allow-dirty`，只要求工作区干净；
+- cargo 打包时会遵守 `.gitignore`（`*.mp4`、`frame_*.png`、`/target/`、`/.reasonix/` 等），
+  `Cargo.toml` 里的 `exclude` 仍然保留 —— 两者叠加，多一层保险；
+- 行尾由 `.gitattributes`（`* text=auto eol=lf`）钉死为 LF，避免 Windows 的 `core.autocrlf`
+  在检出时改写工作区文件。
+
+日常流程：
 
 ```console
-$ git init && git add -A && git commit -m "CodeVideoRenderer-rs 0.1.0"
-$ git remote add origin <你的远端地址>
-$ git push -u origin main
+$ git add -A && git commit -m "描述这次改动"
+$ git push
 ```
-
-之后 `cargo publish` 不再需要 `--allow-dirty`，`.gitignore` 里的规则（`*.mp4`、
-`frame_*.png` 等）也会自动作用于打包。`Cargo.toml` 的 `exclude` 可以保留，两者不冲突。
 
 ---
 
@@ -153,6 +151,6 @@ $ cargo publish --allow-dirty
 | `file size ... exceeds the maximum` | 打包体积超过 10 MiB | 检查是否混入了视频/图片，补进 `Cargo.toml` 的 `exclude` |
 | `crate version 0.1.0 is already uploaded` | 版本号已用过 | 提升 `version` |
 | `crate name ... is already taken` | 名字被占 | 换包名（`[lib] name` 可以保持 `codevideorenderer` 不变） |
-| `working directory is dirty` / `no VCS` | 不是 git 仓库或有未提交改动 | 加 `--allow-dirty`，或按 §4 初始化仓库 |
+| `working directory is dirty` | 有未提交的改动 | 先 `git add -A && git commit` |
 | `failed to verify package tarball` | 打包后的代码编译不过 | 通常是文件被 `exclude` 漏掉（例如新增了被引用的资源）；看 `cargo package --list` |
 | `API token not found` | 没登录 | `cargo login <token>` |

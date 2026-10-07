@@ -7,6 +7,8 @@ description = "Render dynamic \"typing\" code videos — a Rust reimplementation
 license = "MIT"
 readme = "README.md"
 documentation = "https://docs.rs/codevideorenderer"
+repository = "https://github.com/Goway-Hui/codevideorenderer-rs"
+homepage = "https://github.com/Goway-Hui/codevideorenderer-rs"
 keywords = ["video", "code", "animation", "render", "syntax-highlighting"]
 categories = ["multimedia::video", "command-line-utilities"]
 # 本目录不是 git 仓库，cargo 不会读 .gitignore，所以要显式排除这些文件；
