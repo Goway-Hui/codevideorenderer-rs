@@ -299,3 +299,42 @@ exclude = ["*.mp4", "frame_*.png", "preview.png", "frames/",
 
 **连带效果**：因为已经是 git 仓库，`cargo publish` 不再需要 `--allow-dirty`，打包也会自动
 遵守 `.gitignore`（`Cargo.toml` 的 `exclude` 保留，作为双重保险）。`docs/RELEASING.md` 已同步。
+
+---
+
+## 11. v2.6：发布到 crates.io（2026-10-07）
+
+**已上线**：<https://crates.io/crates/codevideorenderer> —— `codevideorenderer 0.1.0`
+
+```console
+$ cargo publish
+   Packaged 30 files, 13.4MiB (7.1MiB compressed)
+   Uploaded codevideorenderer v0.1.0 to registry `crates-io`
+   Published codevideorenderer v0.1.0 at registry `crates-io`
+```
+
+| 项 | 值 |
+| --- | --- |
+| 包名 | `codevideorenderer`（库名同名，二进制 `cvr`） |
+| 版本 | `0.1.0` |
+| 体积 | 30 文件 / 13.4 MiB（压缩 7.1 MiB，上限 10 MiB） |
+| 元数据 | license MIT；documentation 指向 docs.rs；homepage/repository 指向 GitHub |
+| git tag | `v0.1.0` 已推送，与 crates.io 版本一一对应 |
+
+**发布后验证**：`cargo search codevideorenderer` 能查到（`codevideorenderer = "0.1.0"`）；
+`cargo info codevideorenderer` 的 license / documentation / homepage / repository / features 均正确。
+
+**安装**：
+
+```console
+$ cargo install codevideorenderer     # 装出 cvr 命令
+```
+
+或作为库依赖：
+
+```toml
+[dependencies]
+codevideorenderer = "0.1"
+```
+
+**注意**：0.1.0 已固定，之后任何改动都要以新版本号发布（例如 0.1.1 / 0.2.0）。

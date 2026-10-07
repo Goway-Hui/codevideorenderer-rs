@@ -3,7 +3,12 @@
 Notable changes to `codevideorenderer`. The grouping follows the original
 project's `docs/changelog.rst`: **Additions**, **Changes**, **Deletions**.
 
-## Unreleased
+## 0.1.0 — 2026-10-07
+
+首次发布。相对 Python + Manim 原版的完整变化如下 —— 预处理、19 种手写语法、
+43 套 Pygments 主题、关键帧相机（入场 / 跟随 / 拉远 / 晃动）、rayon 并行渲染
+直接流入单个 ffmpeg 管道（或输出 PNG 序列，不需要 ffmpeg）。分类沿用原项目
+`docs/changelog.rst` 的 Additions / Changes / Deletions。
 
 ### Additions
 
@@ -110,10 +115,3 @@ project's `docs/changelog.rst`: **Additions**, **Changes**, **Deletions**.
   `Timeline::reference_width()`, `CameraTrack::first()`,
   `FrameRenderer::glyph_count()`, `Sink::ffmpeg_available()`.
 - The always-true `elapsed.is_finite()` check that ran after a render finished.
-
-## 0.1.0
-
-- First release: preprocessing, 19 hand-written grammars with
-  Pygments-compatible token kinds, 43 exported Pygments styles, a keyframed
-  camera (entrance, follow, zoom-out, sway), rayon-parallel frame rendering into
-  a single ffmpeg pipe (or a PNG sequence without ffmpeg).
