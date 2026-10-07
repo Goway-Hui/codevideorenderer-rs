@@ -1,6 +1,6 @@
 # CodeVideoRenderer-rs
 
-用 Rust 渲染**「打字」代码视频**：给一段代码，逐字符地动画呈现，相机跟随光标移动，
+用 Rust 渲染**打字代码视频**：给一段代码，逐字符地动画呈现，相机跟随光标移动，
 最后编码成 MP4。
 
 本项目是 [CodeVideoRenderer](https://github.com/ExploreMaths/CodeVideoRenderer)（Python + Manim）
