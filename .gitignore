@@ -1,0 +1,13 @@
+/target/
+**/*.rs.bk
+*.pdb
+
+# AI 会话数据（附件、临时上下文）
+/.reasonix/
+
+# Render output
+/frames_test/
+/frames/
+*.mp4
+/frame_*.png
+/preview.png
