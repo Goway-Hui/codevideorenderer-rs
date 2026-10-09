@@ -7,6 +7,8 @@ character while a camera follows the caret, then encoded to MP4.
 
 ## Demo
 
+![glow theme demo](docs/demo/demo-glow.gif)
+
 | Preview | Click to play |
 |---|---|
 | fibonacci (default camera follow) | [demo-fibonacci.mp4](demo-fibonacci.mp4) |

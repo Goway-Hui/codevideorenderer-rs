@@ -12,6 +12,8 @@
 
 ## Demo
 
+![glow 主题演示](docs/demo/demo-glow.gif)
+
 | 预览 | 点击播放 |
 |---|---|
 | fibonacci（默认相机跟随） | [demo-fibonacci.mp4](demo-fibonacci.mp4) |
