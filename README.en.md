@@ -5,6 +5,17 @@ character while a camera follows the caret, then encoded to MP4.
 
 > 中文文档：[README.md](README.md)
 
+## Demo
+
+| Preview | Click to play |
+|---|---|
+| fibonacci (default camera follow) | [demo-fibonacci.mp4](demo-fibonacci.mp4) |
+| midnight theme | [demo-midnight.mp4](demo-midnight.mp4) |
+| glow theme | [demo-glow.mp4](demo-glow.mp4) |
+| plain theme | [demo-plain.mp4](demo-plain.mp4) |
+
+> Click a link to play the MP4 in the browser (supported by both GitHub and GitCode).
+
 This is a from-scratch Rust reimplementation of
 [CodeVideoRenderer](https://github.com/ExploreMaths/CodeVideoRenderer) (Python +
 Manim). The visual language is deliberately the same — monospace grid, line

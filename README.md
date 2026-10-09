@@ -10,6 +10,17 @@
 
 > English documentation: [README.en.md](README.en.md)
 
+## Demo
+
+| 预览 | 点击播放 |
+|---|---|
+| fibonacci（默认相机跟随） | [demo-fibonacci.mp4](demo-fibonacci.mp4) |
+| midnight 主题 | [demo-midnight.mp4](demo-midnight.mp4) |
+| glow 主题 | [demo-glow.mp4](demo-glow.mp4) |
+| plain 主题 | [demo-plain.mp4](demo-plain.mp4) |
+
+> 点击链接可直接在浏览器中在线播放（GitHub / GitCode 均支持 MP4 在线预览）。
+
 ```console
 $ cvr --code-file examples/fibonacci.py --style midnight
 cvr 0.1.0: python · midnight · 1920x1080 @ 60fps
